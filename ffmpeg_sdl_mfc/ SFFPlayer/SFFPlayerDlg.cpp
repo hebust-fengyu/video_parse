@@ -1,14 +1,4 @@
-/**
- * ×î¼òµ¥µÄÍ¼ĞÎ½çÃæµÄÊÓÆµ²¥·ÅÆ÷
- * Simplest FFmpeg Player GUI
- *
- * À×Ïöæè Lei Xiaohua
- * leixiaohua1020@126.com
- * ÖĞ¹ú´«Ã½´óÑ§/Êı×ÖµçÊÓ¼¼Êõ
- * Communication University of China / Digital TV Technology
- * http://blog.csdn.net/leixiaohua1020
- *
- */
+
 
 #include "stdafx.h"
 #include "SFFPlayer.h"
@@ -33,20 +23,20 @@ extern "C"
 
 
 
-// ÓÃÓÚÓ¦ÓÃ³ÌĞò¡°¹ØÓÚ¡±²Ëµ¥ÏîµÄ CAboutDlg ¶Ô»°¿ò
+// ç”¨äºåº”ç”¨ç¨‹åºâ€œå…³äºâ€èœå•é¡¹çš„ CAboutDlg å¯¹è¯æ¡†
 
 class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
 
-// ¶Ô»°¿òÊı¾İ
+// å¯¹è¯æ¡†æ•°æ®
 	enum { IDD = IDD_ABOUTBOX };
 
 	protected:
-	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV Ö§³Ö
+	virtual void DoDataExchange(CDataExchange* pDX);    // DDX/DDV æ”¯æŒ
 
-// ÊµÏÖ
+// å®ç°
 protected:
 	DECLARE_MESSAGE_MAP()
 };
@@ -64,7 +54,7 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CSFFPlayerDlg ¶Ô»°¿ò
+// CSFFPlayerDlg å¯¹è¯æ¡†
 
 
 
@@ -96,7 +86,7 @@ BEGIN_MESSAGE_MAP(CSFFPlayerDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CSFFPlayerDlg ÏûÏ¢´¦Àí³ÌĞò
+// CSFFPlayerDlg æ¶ˆæ¯å¤„ç†ç¨‹åº
 
 BOOL CSFFPlayerDlg::OnInitDialog()
 {
@@ -106,9 +96,9 @@ BOOL CSFFPlayerDlg::OnInitDialog()
 	freopen("CONOUT$", "w", stdout);
 	freopen("CONOUT$", "w", stderr);
 
-	// ½«¡°¹ØÓÚ...¡±²Ëµ¥ÏîÌí¼Óµ½ÏµÍ³²Ëµ¥ÖĞ¡£
+	// å°†â€œå…³äº...â€èœå•é¡¹æ·»åŠ åˆ°ç³»ç»Ÿèœå•ä¸­ã€‚
 
-	// IDM_ABOUTBOX ±ØĞëÔÚÏµÍ³ÃüÁî·¶Î§ÄÚ¡£
+	// IDM_ABOUTBOX å¿…é¡»åœ¨ç³»ç»Ÿå‘½ä»¤èŒƒå›´å†…ã€‚
 	ASSERT((IDM_ABOUTBOX & 0xFFF0) == IDM_ABOUTBOX);
 	ASSERT(IDM_ABOUTBOX < 0xF000);
 
@@ -126,14 +116,14 @@ BOOL CSFFPlayerDlg::OnInitDialog()
 		}
 	}
 
-	// ÉèÖÃ´Ë¶Ô»°¿òµÄÍ¼±ê¡£µ±Ó¦ÓÃ³ÌĞòÖ÷´°¿Ú²»ÊÇ¶Ô»°¿òÊ±£¬¿ò¼Ü½«×Ô¶¯
-	//  Ö´ĞĞ´Ë²Ù×÷
-	SetIcon(m_hIcon, TRUE);			// ÉèÖÃ´óÍ¼±ê
-	SetIcon(m_hIcon, FALSE);		// ÉèÖÃĞ¡Í¼±ê
+	// è®¾ç½®æ­¤å¯¹è¯æ¡†çš„å›¾æ ‡ã€‚å½“åº”ç”¨ç¨‹åºä¸»çª—å£ä¸æ˜¯å¯¹è¯æ¡†æ—¶ï¼Œæ¡†æ¶å°†è‡ªåŠ¨
+	//  æ‰§è¡Œæ­¤æ“ä½œ
+	SetIcon(m_hIcon, TRUE);			// è®¾ç½®å¤§å›¾æ ‡
+	SetIcon(m_hIcon, FALSE);		// è®¾ç½®å°å›¾æ ‡
 
-	// TODO: ÔÚ´ËÌí¼Ó¶îÍâµÄ³õÊ¼»¯´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ é¢å¤–çš„åˆå§‹åŒ–ä»£ç 
 
-	return TRUE;  // ³ı·Ç½«½¹µãÉèÖÃµ½¿Ø¼ş£¬·ñÔò·µ»Ø TRUE
+	return TRUE;  // é™¤éå°†ç„¦ç‚¹è®¾ç½®åˆ°æ§ä»¶ï¼Œå¦åˆ™è¿”å› TRUE
 }
 
 void CSFFPlayerDlg::OnSysCommand(UINT nID, LPARAM lParam)
@@ -149,19 +139,19 @@ void CSFFPlayerDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	}
 }
 
-// Èç¹ûÏò¶Ô»°¿òÌí¼Ó×îĞ¡»¯°´Å¥£¬ÔòĞèÒªÏÂÃæµÄ´úÂë
-//  À´»æÖÆ¸ÃÍ¼±ê¡£¶ÔÓÚÊ¹ÓÃÎÄµµ/ÊÓÍ¼Ä£ĞÍµÄ MFC Ó¦ÓÃ³ÌĞò£¬
-//  Õâ½«ÓÉ¿ò¼Ü×Ô¶¯Íê³É¡£
+// å¦‚æœå‘å¯¹è¯æ¡†æ·»åŠ æœ€å°åŒ–æŒ‰é’®ï¼Œåˆ™éœ€è¦ä¸‹é¢çš„ä»£ç 
+//  æ¥ç»˜åˆ¶è¯¥å›¾æ ‡ã€‚å¯¹äºä½¿ç”¨æ–‡æ¡£/è§†å›¾æ¨¡å‹çš„ MFC åº”ç”¨ç¨‹åºï¼Œ
+//  è¿™å°†ç”±æ¡†æ¶è‡ªåŠ¨å®Œæˆã€‚
 
 void CSFFPlayerDlg::OnPaint()
 {
 	if (IsIconic())
 	{
-		CPaintDC dc(this); // ÓÃÓÚ»æÖÆµÄÉè±¸ÉÏÏÂÎÄ
+		CPaintDC dc(this); // ç”¨äºç»˜åˆ¶çš„è®¾å¤‡ä¸Šä¸‹æ–‡
 
 		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
 
-		// Ê¹Í¼±êÔÚ¹¤×÷Çø¾ØĞÎÖĞ¾ÓÖĞ
+		// ä½¿å›¾æ ‡åœ¨å·¥ä½œåŒºçŸ©å½¢ä¸­å±…ä¸­
 		int cxIcon = GetSystemMetrics(SM_CXICON);
 		int cyIcon = GetSystemMetrics(SM_CYICON);
 		CRect rect;
@@ -169,7 +159,7 @@ void CSFFPlayerDlg::OnPaint()
 		int x = (rect.Width() - cxIcon + 1) / 2;
 		int y = (rect.Height() - cyIcon + 1) / 2;
 
-		// »æÖÆÍ¼±ê
+		// ç»˜åˆ¶å›¾æ ‡
 		dc.DrawIcon(x, y, m_hIcon);
 	}
 	else
@@ -178,8 +168,8 @@ void CSFFPlayerDlg::OnPaint()
 	}
 }
 
-//µ±ÓÃ»§ÍÏ¶¯×îĞ¡»¯´°¿ÚÊ±ÏµÍ³µ÷ÓÃ´Ëº¯ÊıÈ¡µÃ¹â±ê
-//ÏÔÊ¾¡£
+//å½“ç”¨æˆ·æ‹–åŠ¨æœ€å°åŒ–çª—å£æ—¶ç³»ç»Ÿè°ƒç”¨æ­¤å‡½æ•°å–å¾—å…‰æ ‡
+//æ˜¾ç¤ºã€‚
 HCURSOR CSFFPlayerDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
@@ -240,7 +230,7 @@ int simplest_ffmpeg_player(LPVOID lpParam)
 
 	struct SwsContext *img_convert_ctx;
 	//===========================================
-	//ÎÄ¼şÂ·¾¶
+	//æ–‡ä»¶è·¯å¾„
 	CSFFPlayerDlg *dlg=(CSFFPlayerDlg *)lpParam;
 	char filepath[250]={0};
 	GetWindowTextA(dlg->m_url,(LPSTR)filepath,250);
@@ -295,11 +285,11 @@ int simplest_ffmpeg_player(LPVOID lpParam)
 		screen_w = pCodecCtx->width;
 		screen_h = pCodecCtx->height;
 
-		//ÏÔÊ¾ÔÚµ¯³ö´°¿Ú
+		//æ˜¾ç¤ºåœ¨å¼¹å‡ºçª—å£
 		//screen = SDL_CreateWindow("Simplest ffmpeg player's Window", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 		//	screen_w, screen_h,SDL_WINDOW_OPENGL);
 		//===========================================
-		//ÏÔÊ¾ÔÚMFC¿Ø¼şÉÏ
+		//æ˜¾ç¤ºåœ¨MFCæ§ä»¶ä¸Š
 		screen = SDL_CreateWindowFrom(dlg->GetDlgItem(IDC_SCREEN)->GetSafeHwnd());
 		//===========================================
 		if(!screen) {  
@@ -391,11 +381,11 @@ void CSFFPlayerDlg::OnBnClickedStart()
 	char url[250]={0};
 	m_url.GetWindowTextA(url,250);
 	if(strcmp(url,"")==0){
-		AfxMessageBox("ÎÄ¼şÂ·¾¶Îª¿Õ£¡");
+		AfxMessageBox("æ–‡ä»¶è·¯å¾„ä¸ºç©ºï¼");
 		return ;
 	}
 	*/
-	pThreadPlay = AfxBeginThread(Thread_Play,this);//¿ªÆôÏß³Ì
+	pThreadPlay = AfxBeginThread(Thread_Play,this);//å¼€å¯çº¿ç¨‹
 }
 
 
@@ -420,7 +410,7 @@ void CSFFPlayerDlg::OnBnClickedAbout()
 
 void CSFFPlayerDlg::OnBnClickedCancel()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CDialogEx::OnCancel();
 }
 
@@ -428,7 +418,7 @@ void CSFFPlayerDlg::OnBnClickedCancel()
 void CSFFPlayerDlg::OnBnClickedFilebrowser()
 {
 	CString FilePathName;
-	CFileDialog dlg(TRUE,NULL,NULL,NULL,NULL);///TRUEÎªOPEN¶Ô»°¿ò£¬FALSEÎªSAVE AS¶Ô»°¿ò 
+	CFileDialog dlg(TRUE,NULL,NULL,NULL,NULL);///TRUEä¸ºOPENå¯¹è¯æ¡†ï¼ŒFALSEä¸ºSAVE ASå¯¹è¯æ¡† 
 	if(dlg.DoModal()==IDOK) {
 		FilePathName=dlg.GetPathName();
 		m_url.SetWindowText(FilePathName);
@@ -438,7 +428,7 @@ void CSFFPlayerDlg::OnBnClickedFilebrowser()
 
 void CSFFPlayerDlg::OnBnClickedBtnParseVideo()
 {
-	// TODO: ÔÚ´ËÌí¼Ó¿Ø¼şÍ¨Öª´¦Àí³ÌĞò´úÂë
+	// TODO: åœ¨æ­¤æ·»åŠ æ§ä»¶é€šçŸ¥å¤„ç†ç¨‹åºä»£ç 
 	CString name;
 	GetDlgItem(IDC_INPUT_VIDEO_NAME)->GetWindowTextA(name);
 	std::string video_name = name.GetBuffer();
